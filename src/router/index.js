@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Dashboard from '../views/dashboard.vue';
-import MatriksKegiatan from '../views/MatriksKegiatan.vue';
-import RekapHonorMitra from '../views/RekapHonorMitra.vue';
-import HonorMitraBulanan from '../views/HonorMitraBulanan.vue';
-import DatabaseMitra from '../views/DatabaseMitra.vue';
-import EvaluasiMitra from '../views/EvaluasiMitra.vue';
+import Dashboard from '../pages/Dashboard.vue';
+import MatriksKegiatan from '../pages/MatriksKegiatan.vue';
+import RekapHonorMitra from '../pages/RekapHonorMitra.vue';
+import HonorMitraBulanan from '../pages/HonorMitraBulanan.vue';
+import DatabaseMitra from '../pages/DatabaseMitra.vue';
+import EvaluasiMitra from '../pages/EvaluasiMitra.vue';
 
 const routes = [
-  { path: '/', redirect: '/dashboard' },
+  { path: '/home', alias: '/', redirect: '/dashboard' },
   { path: '/dashboard', component: Dashboard },
   { path: '/matrikskegiatan', component: MatriksKegiatan },
   { path: '/rekaphonormitra', component: RekapHonorMitra },

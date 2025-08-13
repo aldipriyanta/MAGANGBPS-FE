@@ -1,51 +1,58 @@
-<template>
-  <div class="app-container">
-    <sidebar />
-    <main class="main-content">
-      <router-view />
-    </main>
+<template>    
+
+  <div class="appcontainer">
+        <Header />
+
+   <div class="contentwrapper">
+        <Sidebar />
+      <main class="maincontent">
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-import sidebar from './components/sidebar.vue';
+import Header from './components/header.vue';
+import Sidebar from './components/sidebar.vue';
 
 export default {
   components: {
-    sidebar
+    Header,
+    Sidebar
   }
 };
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+header
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7fa;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #140f0f;
 }
 
-.app-container {
-  display: flex;
-  min-height: 100vh;
+
+.sidebar {
+  width: 250px;
+  background-color: #1a1a2e;
+  color: white;
+  transition: width 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
-.main-content {
-  margin-left: 250px;
-  padding: 20px;
+.maincontent {
   flex: 1;
-  background-color: #f5f7fa;
-  min-height: 100vh;
+  padding: 90px 20px 20px;
+  background-color: #af9f9f;
 }
 
-/* Responsif */
+
 @media (max-width: 768px) {
-  .main-content {
-    margin-left: 60px;
+  .sidebar {
+    width: 60px;
   }
+
 }
 </style>

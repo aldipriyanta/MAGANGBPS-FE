@@ -12,11 +12,11 @@ export default {
 
 <style scoped>
 .dashboard {
-  padding: 20px;
+  padding: 0;
   font-family: 'Segoe UI', sans-serif;
 }
 .dashboard h1 {
   color: #0d3b66;
-  margin-bottom: 20px;
+  margin: 0;
 }
 </style>

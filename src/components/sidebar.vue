@@ -46,4 +46,4 @@ export default {
 };
 </script>
 
-<style src="../assets/sidebar.css"></style>
+<style src="./sidebar.css"></style>
