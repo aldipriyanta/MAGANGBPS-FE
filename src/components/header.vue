@@ -51,6 +51,7 @@ export default {
 }
 
 .logosim {
+  display: flex;
   width: 100%;
   max-width: 90px;
   height: auto;
@@ -58,6 +59,7 @@ export default {
 } 
 
 .judulsim {
+  display: flex;
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
@@ -71,6 +73,7 @@ export default {
 }
 
 .judulbps {
+  display: flex;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -80,10 +83,12 @@ export default {
 }
 
 .logobps {
+  display: flex;
   max-height: 70px;
 }
 
 .logoberakhlak{
+  display: flex;
   max-height: 45px;
 }
 </style>
