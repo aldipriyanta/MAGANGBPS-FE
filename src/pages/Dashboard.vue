@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div class="containerdashboard">
     <h1>dashboard</h1>
   </div>
 </template>
@@ -11,12 +11,9 @@ export default {
 </script>
 
 <style scoped>
-.dashboard {
-  padding: 0;
+.containerdashboard {
+  position: center;
   font-family: 'Segoe UI', sans-serif;
-}
-.dashboard h1 {
   color: #0d3b66;
-  margin: 0;
 }
 </style>

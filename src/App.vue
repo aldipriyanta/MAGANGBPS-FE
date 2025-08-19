@@ -25,17 +25,21 @@ export default {
 </script>
 
 <style>
-header
-
+/* body */
 body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #140f0f;
+  background-color: #ffffff;
 }
-
+/* body */
 
 .sidebar {
   width: 250px;
-  background-color: #1a1a2e;
+  background-color: #176cc1;
   color: white;
   transition: width 0.3s ease;
   overflow-y: auto;
@@ -43,9 +47,7 @@ body {
 }
 
 .maincontent {
-  flex: 1;
-  padding: 90px 20px 20px;
-  background-color: #af9f9f;
+  background-color: #ffffff;
 }
 
 
