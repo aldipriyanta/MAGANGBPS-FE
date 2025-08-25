@@ -26,7 +26,7 @@ export default {
 
 <style>
 /* body */
-body {
+/* body {
   margin: 0;
   display: flex;
   place-items: center;
@@ -34,7 +34,7 @@ body {
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: #ffffff;
-}
+} */
 /* body */
 
 .sidebar {
