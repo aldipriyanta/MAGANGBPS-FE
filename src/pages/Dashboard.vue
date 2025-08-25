@@ -46,6 +46,25 @@
         Reset Filter
       </button>
     </div>
+
+    <div class="tablecontainer">
+      <h2>10 Teratas Honor Mitra Perbulan</h2>
+      <table class="tabel1">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Id_nama</th>
+            <th>Kegiatan</th>
+            <th>Honor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 

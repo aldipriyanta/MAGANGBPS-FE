@@ -13,7 +13,7 @@ const routes = [
   { path: '/rekaphonormitra', component: RekapHonorMitra },
   { path: '/honormitrabulanan', component: HonorMitraBulanan },
   { path: '/databasemitra', component: DatabaseMitra },
-  { path: '/evaluasi-mitra', component: EvaluasiMitra }
+  { path: '/evaluasimitra', component: EvaluasiMitra }
 ];
 
 const router = createRouter({
