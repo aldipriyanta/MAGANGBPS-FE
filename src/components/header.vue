@@ -1,25 +1,26 @@
 <template>
     <header class="header">
-        <div class="sim">
-            <img src="/src/assets/sim.png" alt="Logo SIM" class="logosim" />
+      <div class="sim">
+        <div>
+          <img src="/src/assets/sim.png" alt="Logo SIM" class="logosim" />
         </div>
 
         <div class="judulsim">
             Sistem Integrasi Mitra
         </div>
+      </div>
 
-    <div class="bps">
-        <img src="/src/assets/logobps.png" alt="logopbs" class="logobps" />
+      <div class="bps">
+          <img src="/src/assets/logobps.png" alt="logopbs" class="logobps" />
         <div class="judulbps">
-            Badan Pusat Statistik<br/>
+            Badan Pusat Statistik <br />
             Kota Malang
         </div>
-    </div>
-
-    <div class="berakhlak">
-        <img src="/src/assets/berakhlak.png" alt="logoberakhlak" class="logoberakhlak" />
-    </div>
-  </header>
+        <div class="berakhlak">
+          <img src="/src/assets/berakhlak.png" alt="logoberakhlak" class="logoberakhlak" />
+        </div>
+      </div>
+    </header>
 </template>
 
 <script>
@@ -37,10 +38,10 @@ export default {
   background-color: #176cc1;
   color: white;
   display: flex;
-  justify-content:flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  height: 60px;
+  height: 50px;
   z-index: 1000;
 }
 
@@ -48,6 +49,7 @@ export default {
   padding-left: 60px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .logosim {
@@ -64,22 +66,25 @@ export default {
   font-weight: bold;
   text-align: center;
   font-style: italic;
-  padding-right: 800px;
 }
 
 .bps {
   display: flex;
+  flex-wrap: 10px;
   align-items: center;
+  margin-left: 800px;
+  justify-items: end;
 }
 
 .judulbps {
-  display: flex;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
   font-style: italic;
   text-align: left;
-  padding-right: 10px;
+  flex: auto;
+  display: flex;
+  margin-right: 10px;
 }
 
 .logobps {
@@ -90,5 +95,6 @@ export default {
 .logoberakhlak{
   display: flex;
   max-height: 45px;
+  align-items: start;
 }
 </style>

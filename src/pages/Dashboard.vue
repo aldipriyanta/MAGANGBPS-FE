@@ -47,6 +47,23 @@
       </button>
     </div>
 
+    <div class="chartcontainer">
+      <div class="stat">
+        <div class="teksstat">Jumlah Kegiatan</div>
+        <div class="valuestat">150</div>
+      </div>
+
+      <div class="stat">
+        <div class="teksstat">Jumlah Mitra</div>
+        <div class="valuestat">381</div>
+      </div>
+      
+      <div class="stat">
+        <div class="teksstat">Total Honor</div>
+        <div class="valuestat">2,68M</div>
+      </div>
+    </div>
+
     <div class="tablecontainer">
       <h2>10 Teratas Honor Mitra Perbulan</h2>
       <table class="tabel1">
@@ -156,5 +173,46 @@ export default {
 
 .resetbtn:hover {
   background-color: #a00;
+}
+
+/* chart */
+.chartcontainer {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  min-width: 200px;
+  background-color: #f5f7fa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.teksstat {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.valuestat {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #176cc1;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #176cc1;
+  color: white;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
