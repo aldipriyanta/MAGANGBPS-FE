@@ -1,8 +1,8 @@
-<template>    
+<template>
   <div class="appcontainer">
-        <Header />
-   <div class="contentwrapper">
-        <Sidebar />
+    <Header />
+    <div class="contentwrapper">
+      <Sidebar />
       <main class="maincontent">
         <router-view />
       </main>
@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import Header from './components/header.vue';
-import Sidebar from './components/sidebar.vue';
+import Header from "./components/header.vue";
+import Sidebar from "./components/sidebar.vue";
 
 export default {
   components: {
     Header,
-    Sidebar
-  }
+    Sidebar,
+  },
 };
 </script>
 
@@ -45,14 +45,13 @@ export default {
 }
 
 .maincontent {
+  padding: 70px 70px;
   background-color: #ffffff;
 }
-
 
 @media (max-width: 768px) {
   .sidebar {
     width: 60px;
   }
-
 }
 </style>

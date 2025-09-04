@@ -1,19 +1,17 @@
 <template>
   <div class="evaluasicontainer">
     <div class="teksevaluasi">
-      <h2>Berikan penilaian Bapak/Ibu dengan ketentuan sebagai berikut:</h2> 
-      <p>1. Sangat Baik</p>
-      <p>2. Baik</p>
-      <p>3. Cukup</p>
-      <p>4. Kurang</p>
-      <p>5. Sangat Kurang</p>
+      <h2>Berikan penilaian Bapak/Ibu dengan ketentuan sebagai berikut:</h2>
+      <p>- Sangat Baik = 5</p>
+      <p>- Baik = 4</p>
+      <p>- Cukup = 3</p>
+      <p>- Kurang = 2</p>
+      <p>- Sangat Kurang = 1</p>
     </div>
   </div>
 
   <div class="pilihanfilter">
-    <div class="buttontambahpenilaian">
-      Tambah penilaian
-    </div>
+    <div class="buttontambahpenilaian">Tambah penilaian</div>
 
     <div class="filtermitra">
       <input
@@ -25,25 +23,24 @@
       />
     </div>
   </div>
-  
 </template>
 
 <script>
 export default {
-  name: 'EvaluasiMitra',
+  name: "EvaluasiMitra",
   data() {
     return {
-      cariidmitra: ''
+      cariidmitra: "",
     };
-  }
+  },
 };
 </script>
 
 <style scoped>
 /* teks awal */
 .evaluasicontainer {
-  padding: 70px 70px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0px 0px 20px;
+  font-family: "Segoe UI", sans-serif;
   border-bottom: 1px solid #ddd;
 }
 .teksevaluasi {

@@ -42,9 +42,7 @@
         </select>
       </div>
 
-      <button class="resetbtn" @click="resetFilters">
-        Reset Filter
-      </button>
+      <button class="resetbtn" @click="resetFilters">Reset Filter</button>
     </div>
 
     <div class="chartcontainer">
@@ -57,7 +55,7 @@
         <div class="teksstat">Jumlah Mitra</div>
         <div class="valuestat">381</div>
       </div>
-      
+
       <div class="stat">
         <div class="teksstat">Total Honor</div>
         <div class="valuestat">2,68M</div>
@@ -76,9 +74,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            
-          </tr>
+          <tr></tr>
         </tbody>
       </table>
     </div>
@@ -87,28 +83,28 @@
 
 <script>
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   data() {
     return {
-      pilihanTahun: '',
-      pilihanBulan: '',
-      pilihanTim: ''
+      pilihanTahun: "",
+      pilihanBulan: "",
+      pilihanTim: "",
     };
   },
   methods: {
     resetFilters() {
-      this.pilihanTahun = '';
-      this.pilihanBulan = '';
-      this.pilihanTim = '';
-    }
-  }
+      this.pilihanTahun = "";
+      this.pilihanBulan = "";
+      this.pilihanTim = "";
+    },
+  },
 };
 </script>
 
 <style scoped>
 .dashboardcontainer {
-  padding: 50px 70px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0px 0px 20px;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .dash {
@@ -135,7 +131,7 @@ export default {
   padding: 20px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .filtergroup {
@@ -184,7 +180,7 @@ export default {
   padding: 20px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .stat {
@@ -194,7 +190,7 @@ export default {
   border-radius: 6px;
   min-width: 200px;
   background-color: #f5f7fa;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .teksstat {
   font-size: 0.9rem;
