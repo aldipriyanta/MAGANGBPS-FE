@@ -12,7 +12,7 @@
           <th>Jenis Kelamin</th>
         </tr>
       </thead>
-      
+
       <tbody>
         <tr v-for="mitra in mitras" :key="mitra.id">
           <td>{{ mitra.id }}</td>

@@ -1,26 +1,26 @@
 <template>
-    <header class="header">
-      <div class="sim">
-        <div>
-          <img src="/src/assets/sim.png" alt="Logo SIM" class="logosim" />
-        </div>
-
-        <div class="judulsim">
-            Sistem Integrasi Mitra
-        </div>
+  <header class="header">
+    <div class="sim">
+      <div>
+        <img src="/src/assets/sim.png" alt="Logo SIM" class="logosim" />
       </div>
 
-      <div class="bps">
-          <img src="/src/assets/logobps.png" alt="logopbs" class="logobps" />
-        <div class="judulbps">
-            Badan Pusat Statistik <br />
-            Kota Malang
-        </div>
-        <div class="berakhlak">
-          <img src="/src/assets/berakhlak.png" alt="logoberakhlak" class="logoberakhlak" />
-        </div>
+      <div class="judulsim">
+        Sistem Integrasi Mitra
       </div>
-    </header>
+    </div>
+
+    <div class="bps">
+      <img src="/src/assets/logobps.png" alt="logopbs" class="logobps" />
+      <div class="judulbps">
+        Badan Pusat Statistik <br />
+        Kota Malang
+      </div>
+      <div class="berakhlak">
+        <img src="/src/assets/berakhlak.png" alt="logoberakhlak" class="logoberakhlak" />
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
   max-width: 90px;
   height: auto;
   object-fit: contain;
-} 
+}
 
 .judulsim {
   display: flex;
@@ -92,7 +92,7 @@ export default {
   max-height: 70px;
 }
 
-.logoberakhlak{
+.logoberakhlak {
   display: flex;
   max-height: 45px;
   align-items: start;

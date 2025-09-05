@@ -10,8 +10,7 @@
         3. Petugas Pengolahan (Survei) : Rp 2.882.000 <br />
         4. Petugas Pendataan Lapangan (Sensus) : Rp 4.362.000 <br />
         5. Petugas pemeriksaan Lapangan (Sensus) : Rp 4.830.000 <br />
-        6. Petugas Pengolahan dan Pengawas Pegolahan (Sensus) : Rp 3.194.000
-        <br />
+        6. Petugas Pengolahan dan Pengawas Pegolahan (Sensus) : Rp 3.194.000<br />
       </h1>
     </div>
   </div>
@@ -22,14 +21,14 @@
         Input Kegiatan Mitra
       </button>
 
-      <div class="input-group">
-        <select id="idNama" v-model="selectedIdNama" class="pilih">
+      <div class="filtergroup">
+        <select id="idNama" v-model="pilihanIdNama" class="filterinput">
           <option value="">Id_nama</option>
         </select>
       </div>
 
-      <div class="input-group">
-        <select id="tahun" v-model="selectedTahun" class="pilih">
+      <div class="filtergroup">
+        <select id="tahun" v-model="pilihanTahun" class="filterinput">
           <option value="">Pilih Tahun</option>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
@@ -84,19 +83,19 @@
   </div>
 
   <div class="tablebawah">
-    <div class="tabel tabel1">
+    <div class="tabel">
       <h3>
         Mitra yang Melebihi Honor Standar Biaya Kegiatan Statistik
         {{ formattedMonth }}
       </h3>
-      <div class="card-content">
+      <div class="isitabel1">
         <!-- tabel -->
       </div>
     </div>
 
-    <div class="tabel tabel2">
+    <div class="tabel">
       <h3>Mitra yang tidak memiliki kegiatan {{ formattedMonth }}</h3>
-      <div class="card-content">
+      <div class="isitabel2">
         <!-- tabel -->
       </div>
     </div>
@@ -107,7 +106,7 @@
     <span v-if="pagination">
       1 - {{ dataHonor.length }} / {{ pagination.total }}
     </span>
-    <button class="pagebtn" @click="prevPage"><</button>
+    <button class="pagebtn" @click="prevPage"></button>
     <button class="pagebtn" @click="nextPage">></button>
   </div>
 </template>
@@ -117,8 +116,8 @@ export default {
   name: "HonorBulananDetail",
   data() {
     return {
-      selectedIdNama: "",
-      selectedTahun: "",
+      pilihanIdNama: "",
+      pilihanTahun: "",
       dataHonor: [],
       loading: false,
       pagination: {
@@ -155,8 +154,8 @@ export default {
       alert('Fitur "Input Kegiatan Mitra" akan segera tersedia!');
     },
     resetFilters() {
-      this.selectedIdNama = "";
-      this.selectedTahun = "";
+      this.pilihanIdNama = "";
+      this.pilihanTahun = "";
     },
     prevPage() {
       if (this.pagination.currentPage > 1) {
@@ -171,7 +170,6 @@ export default {
 </script>
 
 <style scoped>
-/* Informasi Standar Honor */
 .boxteks {
   font-family: "Segoe UI", sans-serif;
 }
@@ -190,7 +188,6 @@ export default {
   line-height: 1.6;
 }
 
-/* Filter Tabel Utama */
 .tabelfilter {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -222,12 +219,12 @@ export default {
   background-color: #0a2f4a;
 }
 
-.input-group {
+.filtergroup {
   flex: 1;
   min-width: 200px;
 }
 
-.pilih {
+.filterinput {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -237,7 +234,7 @@ export default {
   background-color: white;
 }
 
-.pilih:focus {
+.filterinput:focus {
   outline: none;
   border-color: #0d3b66;
   box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
@@ -258,7 +255,6 @@ export default {
   background-color: #a00;
 }
 
-/* Tabel Utama */
 .tablecontainer {
   overflow-x: auto;
 }
@@ -292,7 +288,7 @@ export default {
   padding: 20px;
 }
 
-/* Rincian Kegiatan Mitra */
+/* rincian kegiatan mitra */
 .rincian {
   margin-bottom: 20px;
 }
@@ -327,40 +323,37 @@ export default {
 .tabel {
   flex: 1;
   min-width: 300px;
-  padding: 20px;
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.tabel.tabel1 {
-  background-color: #e6f2ff;
-  color: #c00;
-  border: 1px solid #d9534f;
-}
-
-.tabel.tabel2 {
-  background-color: #e6f2ff;
-  color: #009688;
-  border: 1px solid #5cb85c;
-}
-
 .tabel h3 {
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   color: inherit;
 }
 
-.tabel .card-content {
+.tabel .isitabel1 {
   padding: 10px;
-  background-color: white;
+  background-color: rgb(255, 0, 0);
   border: 1px solid #ddd;
   border-radius: 6px;
   min-height: 100px;
   text-align: left;
 }
 
-/* Pagination */
+.tabel .isitabel2 {
+  padding: 10px;
+  background-color: rgb(169, 175, 0);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-height: 100px;
+  text-align: left;
+}
+
+/* pagination */
 .pagination {
   display: flex;
   justify-content: flex-end;

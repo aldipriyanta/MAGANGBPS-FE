@@ -145,7 +145,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
-  appearance: none;
+  /* appearance: none; */
   background-color: #f5f5f5;
 }
 
@@ -192,12 +192,14 @@ export default {
   background-color: #f5f7fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .teksstat {
   font-size: 0.9rem;
   color: #555;
   font-weight: bold;
   margin-bottom: 5px;
 }
+
 .valuestat {
   font-size: 1.2rem;
   font-weight: bold;

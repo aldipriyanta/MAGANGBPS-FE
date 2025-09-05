@@ -8,44 +8,34 @@
         <li>
           <router-link to="/dashboard" @click="autoCollapse">
             <span class="icon">
-              <font-awesome-icon icon="fa-regular fa-house" /> </span
-            >Dashboard</router-link
-          >
+              <font-awesome-icon icon="fa-regular fa-house" />
+            </span>Dashboard
+          </router-link>
         </li>
         <li>
           <router-link to="/matrikskegiatan" @click="autoCollapse">
-            <span class="icon"
-              ><font-awesome-icon icon="fa-regular fa-file-lines" /></span
-            >Matriks Kegiatan</router-link
-          >
+            <span class="icon">
+              <font-awesome-icon icon="fa-regular fa-file-lines" />
+            </span>Matriks Kegiatan
+          </router-link>
         </li>
 
         <!-- dropdown rekaphonormitra -->
         <li>
-          <div class="dropdown-header" @click="toggleRekapHonor">
+          <div class="dropdown" @click="toggleRekapHonor">
             <span class="arrow">{{ isRekapHonorOpen ? "▼" : "▶" }}</span>
-            <span class="icon"
-              ><font-awesome-icon icon="fa-regular fa-folder-open"
-            /></span>
+            <span class="icon"><font-awesome-icon icon="fa-regular fa-folder-open" /></span>
             Rekap Honor Mitra
           </div>
 
           <ul v-if="isRekapHonorOpen" class="submenu">
             <li>
-              <router-link
-                to="/rekap-honor"
-                class="submenu-item"
-                @click="autoCollapse"
-              >
+              <router-link to="/rekaphonor" class="submenu-item" @click="autoCollapse">
                 Rekap Honor
               </router-link>
             </li>
             <li>
-              <router-link
-                to="/rincian-honor"
-                class="submenu-item"
-                @click="autoCollapse"
-              >
+              <router-link to="/rincianhonor" class="submenu-item" @click="autoCollapse">
                 Rincian Honor Mitra
               </router-link>
             </li>
@@ -54,21 +44,15 @@
 
         <!-- dropdown honormitrabulanan -->
         <li>
-          <div class="dropdown-header" @click="toggleHonorBulanan">
+          <div class="dropdown" @click="toggleHonorBulanan">
             <span class="arrow">{{ isHonorBulananOpen ? "▼" : "▶" }}</span>
-            <span class="icon"
-              ><font-awesome-icon icon="fa-regular fa-calendar-days"
-            /></span>
+            <span class="icon"><font-awesome-icon icon="fa-regular fa-calendar-days" /></span>
             <div class="tekshonor">Honor Mitra Bulanan</div>
           </div>
 
           <ul v-if="isHonorBulananOpen" class="submenu">
             <li v-for="month in months" :key="month">
-              <router-link
-                :to="`/honorbulanan/${month.toLowerCase()}`"
-                class="submenu-item"
-                @click="autoCollapse"
-              >
+              <router-link :to="`/honorbulanan/${month.toLowerCase()}`" class="submenu-item" @click="autoCollapse">
                 {{ month }}
               </router-link>
             </li>
@@ -76,18 +60,12 @@
         </li>
 
         <li>
-          <router-link to="/databasemitra" @click="autoCollapse"
-            ><span class="icon"
-              ><font-awesome-icon icon="fa-regular fa-user" /></span
-            >Database Mitra</router-link
-          >
+          <router-link to="/databasemitra" @click="autoCollapse"><span class="icon"><font-awesome-icon
+                icon="fa-regular fa-user" /></span>Database Mitra</router-link>
         </li>
         <li>
-          <router-link to="/evaluasimitra" @click="autoCollapse"
-            ><span class="icon"
-              ><font-awesome-icon icon="fa-regular fa-star" /></span
-            >Evaluasi Mitra</router-link
-          >
+          <router-link to="/evaluasimitra" @click="autoCollapse"><span class="icon"><font-awesome-icon
+                icon="fa-regular fa-star" /></span>Evaluasi Mitra</router-link>
         </li>
       </ul>
     </nav>
@@ -121,12 +99,16 @@ export default {
   methods: {
     toggleSidebar() {
       this.isCollapsed = !this.isCollapsed;
+      this.isHonorBulananOpen = false;
+      this.isRekapHonorOpen = false;
     },
     toggleRekapHonor() {
+      this.isCollapsed = false;
       this.isRekapHonorOpen = !this.isRekapHonorOpen;
       this.isHonorBulananOpen = false;
     },
     toggleHonorBulanan() {
+      this.isCollapsed = false;
       this.isHonorBulananOpen = !this.isHonorBulananOpen;
       this.isRekapHonorOpen = false;
     },
@@ -191,7 +173,8 @@ export default {
   background-color: #202d53;
 }
 
-.dropdown-header {
+/* dropdown */
+.dropdown {
   display: flex;
   align-items: center;
   padding: 10px 7px;
@@ -201,7 +184,7 @@ export default {
   transition: background-color 0.2s;
 }
 
-.dropdown-header:hover {
+.dropdown:hover {
   background-color: #202d53;
 }
 
@@ -210,6 +193,7 @@ export default {
   font-size: 0.8rem;
 }
 
+/* submenu ini isi dari dropdown */
 .submenu {
   list-style: none;
   padding: 0;
@@ -238,52 +222,37 @@ export default {
   border-radius: 8px;
 }
 
+/* sidebar collased */
 .sidebar.collapsed ul li a {
-  padding: 10px;
   color: transparent;
   position: relative;
   border-radius: 50%;
   width: 10px;
   height: 10px;
+  padding-left: 9px;
+  padding-right: 13px;
 }
 
-/* .sidebar.collapsed ul li a::after {
-  content: "";
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: #aaa;
-  border-radius: 50%;
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-
-.sidebar.collapsed .dropdown-header {
-  padding: 10px 0;
-  font-size: 0px;
+.sidebar.collapsed .dropdown {
   color: transparent;
   position: relative;
   border-radius: 50%;
   width: 10px;
   height: 10px;
+  padding-left: 9px;
+  padding-right: 13px;
 }
 
-/* .sidebar.collapsed .dropdown-header::after {
-  content;
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: #aaa;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
+.sidebar.collapsed.dropdown .router-link-active {
+  background-color: #16213e;
+  border-radius: 8px;
+}
 
+.sidebar.collapsed .dropdown .arrow {
+  display: none;
+}
+
+/* button atas */
 .toggle-btn {
   margin-top: 10px;
   margin-inline-start: 15px;
@@ -304,6 +273,7 @@ export default {
   background: #202d53;
 }
 
+/* icon */
 font-awesome-icon {
   margin-right: 10px;
   vertical-align: middle;

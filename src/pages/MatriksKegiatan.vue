@@ -6,40 +6,34 @@
         BPS Kota Malang
       </h1>
     </div>
+  </div>
 
-    <div class="pilihanfilter">
-      <div class="filtergroup">
-        <select v-model="pilihanTahun" class="filterinput">
-          <option value="">Pilih Tahun</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-        </select>
-      </div>
-
-      <div class="filtergroup">
-        <select v-model="pilihanTim" class="filterinput">
-          <option value="">Pilih Tim</option>
-          <option value="a">Distribusi dan Perusahaan</option>
-          <option value="b">Neraca dan Analisis Statistik</option>
-          <option value="c">Pengolahan dan TI</option>
-          <option value="d">Statistik Pertanian, Industri dan PEK</option>
-          <option value="e">Pengolahan dan TI</option>
-        </select>
-      </div>
-
-      <div class="filtermitra">
-        <input
-          id="idmitra"
-          v-model="cariidmitra"
-          type="text"
-          placeholder="Masukkan id mitra"
-          class="cariidmitra"
-        />
-      </div>
-      <div>
-        <button class="resetbtn" @click="resetFilters">Reset Filter</button>
-      </div>
+  <div class="pilihanfilter">
+    <div class="filtergroup">
+      <select v-model="pilihanTahun" class="filterinput">
+        <option value="">Pilih Tahun</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
     </div>
+
+    <div class="filtergroup">
+      <select v-model="pilihanTim" class="filterinput">
+        <option value="">Pilih Tim</option>
+        <option value="a">Distribusi dan Perusahaan</option>
+        <option value="b">Neraca dan Analisis Statistik</option>
+        <option value="c">Pengolahan dan TI</option>
+        <option value="d">Statistik Pertanian, Industri dan PEK</option>
+        <option value="e">Pengolahan dan TI</option>
+      </select>
+    </div>
+
+    <div class="filtergroup">
+      <select id="idNama" v-model="pilihanIdNama" class="filterinput">
+        <option value="">Id_nama</option>
+      </select>
+    </div>
+    <button class="resetbtn" @click="resetFilters">Reset Filter</button>
   </div>
 </template>
 
@@ -49,6 +43,20 @@ import { ref, onMounted } from "vue";
 
 export default {
   name: "MatriksKegiatan",
+  data() {
+    return {
+      pilihanTahun: "",
+      pilihanTim: "",
+      pilihanIdNama: "",
+    };
+  },
+  methods: {
+    resetFilters() {
+      this.pilihanTahun = "";
+      this.pilihanTim = "";
+      this.pilihanIdNama = "";
+    },
+  },
 
   setup() {
     const matan = ref([]);
@@ -84,6 +92,7 @@ export default {
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
 }
+
 .teksmatriks h1 {
   color: black;
   font-size: 3rem;
@@ -92,7 +101,7 @@ export default {
 
 .pilihanfilter {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   margin-bottom: 30px;
   flex-wrap: wrap;
   padding: 20px;
@@ -112,32 +121,11 @@ export default {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
-  appearance: none;
+  /* appearance: none; */
   background-color: #f5f5f5;
 }
 
 .filterinput:focus {
-  outline: none;
-  border-color: #0d3b66;
-  box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
-}
-
-/* filter mitra */
-.filtermitra {
-  min-height: 20px;
-  min-width: 10px;
-}
-
-.filtermitra input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  appearance: none;
-}
-
-.filtermitra input:focus {
   outline: none;
   border-color: #0d3b66;
   box-shadow: 0 0 0 2px rgba(13, 59, 102, 0.2);
@@ -148,6 +136,7 @@ export default {
   padding: 10px 20px;
   background-color: #c00;
   color: white;
+  margin-left: 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;

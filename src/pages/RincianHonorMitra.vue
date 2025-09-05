@@ -1,12 +1,12 @@
 <template>
-  <div class="honormitrabulanan">
+  <div class="">
     <h1>dashboard</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HonorMitraBulanan'
+  name: 'RincianHonor'
 };
 </script>
 
