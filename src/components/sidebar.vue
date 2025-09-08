@@ -1,26 +1,27 @@
 <template>
   <aside :class="['sidebar', { collapsed: isCollapsed }]">
-    <button class="toggle-btn" @click="toggleSidebar">
+    <button class="togglebtn" @click="toggleButton">
       {{ isCollapsed ? "☰" : "✕" }}
     </button>
     <nav>
       <ul>
         <li>
-          <router-link to="/dashboard" @click="autoCollapse">
+          <button class="buttonsidebar" @click.prevent="handleClick('/dashboard')">
             <span class="icon">
-              <font-awesome-icon icon="fa-regular fa-house" />
-            </span>Dashboard
-          </router-link>
+              <font-awesome-icon :icon="['far', 'house']" />
+            </span>
+            <span class="text">Dashboard</span>
+          </button>
         </li>
         <li>
-          <router-link to="/matrikskegiatan" @click="autoCollapse">
+          <button class="buttonsidebar" @click.prevent="handleClick('/matrikskegiatan')">
             <span class="icon">
               <font-awesome-icon icon="fa-regular fa-file-lines" />
             </span>Matriks Kegiatan
-          </router-link>
+          </button>
         </li>
 
-        <!-- dropdown rekaphonormitra -->
+        <!-- dropdown rekaphonormitra (class dropdown/buttonsidebar)-->
         <li>
           <div class="dropdown" @click="toggleRekapHonor">
             <span class="arrow">{{ isRekapHonorOpen ? "▼" : "▶" }}</span>
@@ -30,12 +31,12 @@
 
           <ul v-if="isRekapHonorOpen" class="submenu">
             <li>
-              <router-link to="/rekaphonor" class="submenu-item" @click="autoCollapse">
+              <router-link to="/rekaphonor" class="submenuitem" @click="autoCollapse">
                 Rekap Honor
               </router-link>
             </li>
             <li>
-              <router-link to="/rincianhonor" class="submenu-item" @click="autoCollapse">
+              <router-link to="/rincianhonor" class="submenuitem" @click="autoCollapse">
                 Rincian Honor Mitra
               </router-link>
             </li>
@@ -60,14 +61,25 @@
         </li>
 
         <li>
-          <router-link to="/databasemitra" @click="autoCollapse"><span class="icon"><font-awesome-icon
-                icon="fa-regular fa-user" /></span>Database Mitra</router-link>
+          <button class="buttonsidebar" @click.prevent="handleClick('/databasemitra')">
+            <span class="icon">
+              <font-awesome-icon icon="fa-regular fa-user" />
+            </span>Database Mitra
+          </button>
         </li>
         <li>
-          <router-link to="/evaluasimitra" @click="autoCollapse"><span class="icon"><font-awesome-icon
-                icon="fa-regular fa-star" /></span>Evaluasi Mitra</router-link>
+          <button class="buttonsidebar" @click.prevent="handleClick('/evaluasimitra')">
+            <span class="icon">
+              <font-awesome-icon icon="fa-regular fa-star" />
+            </span>Evaluasi Mitra
+          </button>
         </li>
       </ul>
+      <div class="logout">
+        <button @click="logout"> Keluar
+          {{ isCollapsed ? "" : "🚪" }}
+        </button>
+      </div>
     </nav>
   </aside>
 </template>
@@ -78,6 +90,7 @@ export default {
   data() {
     return {
       isCollapsed: true,
+      isSidebarOpen: true,
       isRekapHonorOpen: false,
       isHonorBulananOpen: false,
       months: [
@@ -97,8 +110,21 @@ export default {
     };
   },
   methods: {
-    toggleSidebar() {
+    async handleClick(path) {
+      if (this.isCollapsed) {
+        this.isCollapsed = false;
+      } else {
+        await this.$router.push(path);
+        this.autoCollapse();
+      }
+    },
+    toggleButton() {
       this.isCollapsed = !this.isCollapsed;
+      this.isHonorBulananOpen = false;
+      this.isRekapHonorOpen = false;
+    },
+    toggleSidebar() {
+      this.isCollapsed = false;
       this.isHonorBulananOpen = false;
       this.isRekapHonorOpen = false;
     },
@@ -116,6 +142,12 @@ export default {
       this.isRekapHonorOpen = false;
       this.isHonorBulananOpen = false;
       this.isCollapsed = true;
+    },
+    logout() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('token');
+
+      this.$router.push('/login');
     },
   },
 };
@@ -173,6 +205,35 @@ export default {
   background-color: #202d53;
 }
 
+.buttonsidebar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.buttonsidebar:hover {
+  background-color: #202d53;
+}
+
+.sidebar.collapsed .buttonsidebar {
+  color: transparent;
+  position: relative;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  padding-left: 9px;
+  padding-right: 13px;
+}
+
 /* dropdown */
 .dropdown {
   display: flex;
@@ -202,7 +263,7 @@ export default {
   border-radius: 0 0 8px 8px;
 }
 
-.submenu-item {
+.submenuitem {
   display: block;
   padding: 10px 20px;
   color: white;
@@ -212,18 +273,18 @@ export default {
   border-radius: 8px;
 }
 
-.submenu-item:hover {
+.submenuitem:hover {
   background-color: #16213e;
   border-radius: 8px;
 }
 
-.submenu-item.router-link-active {
+.submenuitem.router-link-active {
   background-color: #16213e;
   border-radius: 8px;
 }
 
 /* sidebar collased */
-.sidebar.collapsed ul li a {
+/* .sidebar.collapsed ul li a {
   color: transparent;
   position: relative;
   border-radius: 50%;
@@ -231,7 +292,7 @@ export default {
   height: 10px;
   padding-left: 9px;
   padding-right: 13px;
-}
+} */
 
 .sidebar.collapsed .dropdown {
   color: transparent;
@@ -252,8 +313,8 @@ export default {
   display: none;
 }
 
-/* button atas */
-.toggle-btn {
+/* button sidebar & logout*/
+.togglebtn {
   margin-top: 10px;
   margin-inline-start: 15px;
   background: #176cc1;
@@ -269,8 +330,30 @@ export default {
   justify-content: center;
 }
 
-.toggle-btn:hover {
+.togglebtn:hover {
   background: #202d53;
+}
+
+
+.logout {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.logout button {
+  width: 100%;
+  padding: 10px;
+  background-color: #c00;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.logout button:hover {
+  background-color: #a00;
 }
 
 /* icon */

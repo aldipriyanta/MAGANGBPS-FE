@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFileLines } from "@fortawesome/free-regular-svg-icons";
+import { faCircleLeft, faFileLines } from "@fortawesome/free-regular-svg-icons";
 import { faHouse } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
@@ -15,7 +15,8 @@ library.add(faHouse),
   library.add(faStar),
   library.add(faUser),
   library.add(faCalendarDays),
-  library.add(faFolderOpen);
+  library.add(faFolderOpen),
+  library.add(faCircleLeft);
 const app = createApp(App);
 app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);

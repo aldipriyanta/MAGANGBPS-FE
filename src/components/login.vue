@@ -10,12 +10,12 @@
             <form @submit.prevent="handleLogin">
                 <div class="input">
                     <label for="email">Email</label>
-                    <input type="text" id="email" v-model="email" placeholder="Masukkan Email" required />
+                    <input type="email" id="email" v-model="form.email" placeholder="Masukkan Email" required />
                 </div>
 
                 <div class="input">
                     <label for="password">Password</label>
-                    <input type="password" id="password" v-model="password" placeholder="Masukkan password" required />
+                    <input type="password" id="password" v-model="form.password" placeholder="Masukkan password" required />
                 </div>
 
                 <button type="submit" class="btnlogin">Login</button>
@@ -27,39 +27,109 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 export default {
-    name: 'Login'
-//     data() {
-//         return {
-//             form: {
-//                 email: '',
-//                 password: ''
-//             },
-//             error: '',
-//             loading: false
-//         };
-//     },
-//     methods: {
-//         async handleLogin() {
-//             this.loading = true;
-//             this.error = '';
+  name: 'Login',
+  data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      },
+      error: '',
+      loading: false,
+      logoutTimer: null
+    };
+  },
+  methods: {
+    async handleLogin() {
+      this.loading = true;
+      this.error = '';
 
-//             try {
-//                 const res = await axios.post('http://127.0.0.1:8000/api/login', this.form);
+      try {
+        console.log("🔹 Data dikirim:", this.form);
 
-//                 if (response.data.success) {
-//                     localStorage.setItem('isLoggedIn', 'true');
-//                     this.$router.push('/dashboard');
-//                 }
-//             } catch (err) {
-//                 this.error = err.response?.data?.message || 'Gagal Login';
-//             } finally {
-//                 this.loading = false;
-//             }
-//         }
-//     }
+        const response = await axios.post('http://127.0.0.1:8000/api/login', this.form);
+
+        if (response.data.status === 'success') {
+          if (response.data.access_token) {
+            localStorage.setItem('token', response.data.access_token);
+            // console.log("✅ Token disimpan:", response.data.access_token);
+          }
+          localStorage.setItem('isLoggedIn', 'true');
+        //   console.log("✅ isLoggedIn diset: true");
+
+          const loginTime = Date.now();
+          localStorage.setItem('loginTime', loginTime);
+        //   console.log("✅ loginTime disimpan:", new Date(loginTime).toLocaleString());
+
+          this.startSessionTimer();
+          this.$router.push('/dashboard');
+        } else {
+          this.error = response.data.message || 'Login gagal';
+        }
+      } catch (err) {
+        // console.error("❌ Error response:", err.response?.data);
+        this.error = err.response?.data?.message || 'Gagal Login';
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    startSessionTimer() {
+      if (this.logoutTimer) clearTimeout(this.logoutTimer);
+
+    //   console.log("⏳ Memulai session timeout 5 menit...");
+
+      this.logoutTimer = setTimeout(() => {
+        // console.log("⚠ Session timeout tercapai, logout otomatis.");
+        this.logout();
+      }, 30 * 60 * 1000);
+
+    //   console.log("✅ Timer ID:", this.logoutTimer);
+
+      window.addEventListener('mousemove', this.resetSessionTimer);
+      window.addEventListener('keydown', this.resetSessionTimer);
+    },
+
+    resetSessionTimer() {
+      if (this.logoutTimer) clearTimeout(this.logoutTimer);
+
+    //   console.log("🔄 Reset session timer ke 5 menit lagi...");
+
+      this.logoutTimer = setTimeout(() => {
+        // console.log("⚠ Session timeout tercapai, logout otomatis.");
+        this.logout();
+      }, 30 * 60 * 1000);
+
+    //   console.log("✅ Timer baru ID:", this.logoutTimer);
+    },
+
+    logout() {
+        console.log("🚪 Logout dijalankan. Membersihkan session...");
+
+        // Hentikan timer session
+        if (this.logoutTimer) {
+            clearTimeout(this.logoutTimer);
+            this.logoutTimer = null;
+        }
+
+        // Lepas event listener supaya tidak reset timer lagi
+        window.removeEventListener('mousemove', this.resetSessionTimer);
+        window.removeEventListener('keydown', this.resetSessionTimer);
+
+        // Hapus localStorage
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('token');
+        localStorage.removeItem('loginTime');
+
+        console.log("❌ isLoggedIn, token, loginTime dihapus dari localStorage");
+
+        this.$router.push('/login');
+        alert('Session habis, silakan login kembali.');
+    }
+  }
 };
 </script>
 

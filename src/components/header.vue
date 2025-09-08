@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .header {
   position: fixed;
   top: 0;
@@ -62,7 +62,7 @@ export default {
 
 .judulsim {
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   font-style: italic;
