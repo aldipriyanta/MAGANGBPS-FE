@@ -1,12 +1,15 @@
 <template>
   <div class="appcontainer">
-    <Header />
-    <div class="contentwrapper">
-      <Sidebar />
-      <main class="maincontent">
-        <router-view />
-      </main>
-    </div>
+    <template v-if="!isLoginPage">
+      <Header />
+      <div class="contentwrapper">
+        <Sidebar />
+        <main class="maincontent">
+          <router-view />
+        </main>
+      </div>
+    </template>
+    <router-view v-else />
   </div>
 </template>
 
@@ -17,24 +20,33 @@ import Sidebar from "./components/sidebar.vue";
 export default {
   components: {
     Header,
-    Sidebar,
+    Sidebar
   },
+  computed: {
+    isLoginPage() {
+      return this.$route.path === '/login';
+    }
+  }
 };
 </script>
 
 <style>
-/* body */
-/* body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.appcontainer {
   font-family: 'Segoe UI', sans-serif;
   background-color: #ffffff;
-} */
-/* body */
+}
 
+.contentwrapper {
+  display: flex;
+}
+
+.maincontent {
+  flex: 1;
+  padding: 70px 70px;
+  background-color: #ffffff;
+}
+
+/* Sidebar */
 .sidebar {
   width: 250px;
   background-color: #176cc1;
@@ -42,11 +54,6 @@ export default {
   transition: width 0.3s ease;
   overflow-y: auto;
   z-index: 1000;
-}
-
-.maincontent {
-  padding: 70px 70px;
-  background-color: #ffffff;
 }
 
 @media (max-width: 768px) {
