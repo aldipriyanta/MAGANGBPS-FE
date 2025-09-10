@@ -44,6 +44,7 @@ export default {
   flex: 1;
   padding: 70px 70px;
   background-color: #ffffff;
+  padding-right: 20px;
 }
 
 /* Sidebar */

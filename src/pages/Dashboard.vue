@@ -48,23 +48,23 @@
     <div class="chartcontainer">
       <div class="stat">
         <div class="teksstat">Jumlah Kegiatan</div>
-        <div class="valuestat">150</div>
+        <div class="valuestat">150</div> <!-- input data-->
       </div>
 
       <div class="stat">
         <div class="teksstat">Jumlah Mitra</div>
-        <div class="valuestat">381</div>
+        <div class="valuestat">381</div> <!-- input data-->
       </div>
 
       <div class="stat">
         <div class="teksstat">Total Honor</div>
-        <div class="valuestat">2,68M</div>
+        <div class="valuestat">2,68M</div> <!-- input data-->
       </div>
     </div>
 
     <div class="tablecontainer">
       <h2>10 Teratas Honor Mitra Perbulan</h2>
-      <table class="tabel1">
+      <table class="tableteratas">
         <thead>
           <tr>
             <th>No</th>
@@ -73,8 +73,25 @@
             <th>Honor</th>
           </tr>
         </thead>
-        <tbody>
-          <tr></tr>
+        <tbody><!-- input data-->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -108,7 +125,7 @@ export default {
 }
 
 .dash {
-  height: 150px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,8 +196,9 @@ export default {
   margin-bottom: 30px;
   padding: 20px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+  /* border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .stat {
@@ -189,8 +207,8 @@ export default {
   padding: 10px;
   border-radius: 6px;
   min-width: 200px;
-  background-color: #f5f7fa;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* background-color: #f5f7fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .teksstat {
@@ -212,5 +230,49 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* tabel honor teratas */
+.tablecontainer {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableteratas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tableteratas th {
+  background-color: #3b82f6;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableteratas td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableteratas tr:hover {
+  background-color: #e6f2ff;
+}
+
+.textcenter {
+  text-align: center;
+  color: #777;
+  padding: 20px;
 }
 </style>
