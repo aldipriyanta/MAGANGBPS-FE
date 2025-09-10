@@ -10,34 +10,35 @@
             <span class="icon">
               <font-awesome-icon :icon="['far', 'house']" />
             </span>
-            <span class="text">Dashboard</span>
+            <span>Dashboard</span>
           </button>
         </li>
         <li>
           <button class="buttonsidebar" @click.prevent="handleClick('/matrikskegiatan')">
             <span class="icon">
               <font-awesome-icon icon="fa-regular fa-file-lines" />
-            </span>Matriks Kegiatan
+            </span>
+            <span>Matriks Kegiatan</span>
           </button>
         </li>
 
         <!-- dropdown rekaphonormitra (class dropdown/buttonsidebar)-->
         <li>
-          <div class="dropdown" @click="toggleRekapHonor">
+          <button class="buttonsidebardropdown" @click="toggleRekapHonor">
             <span class="arrow">{{ isRekapHonorOpen ? "▼" : "▶" }}</span>
             <span class="icon"><font-awesome-icon icon="fa-regular fa-folder-open" /></span>
-            Rekap Honor Mitra
-          </div>
+            <span>Rekap Honor Mitra</span>
+          </button>
 
           <ul v-if="isRekapHonorOpen" class="submenu">
             <li>
               <router-link to="/rekaphonor" class="submenuitem" @click="autoCollapse">
-                Rekap Honor
+                <span>Rekap Honor</span>
               </router-link>
             </li>
             <li>
               <router-link to="/rincianhonor" class="submenuitem" @click="autoCollapse">
-                Rincian Honor Mitra
+                <span>RIncian Honor Mitra</span>
               </router-link>
             </li>
           </ul>
@@ -45,11 +46,11 @@
 
         <!-- dropdown honormitrabulanan -->
         <li>
-          <div class="dropdown" @click="toggleHonorBulanan">
+          <button class="buttonsidebardropdown" @click="toggleHonorBulanan">
             <span class="arrow">{{ isHonorBulananOpen ? "▼" : "▶" }}</span>
             <span class="icon"><font-awesome-icon icon="fa-regular fa-calendar-days" /></span>
-            <div class="tekshonor">Honor Mitra Bulanan</div>
-          </div>
+            <span>Honor Mitra Bulanan</span>
+          </button>
 
           <ul v-if="isHonorBulananOpen" class="submenu">
             <li v-for="month in months" :key="month">
@@ -64,20 +65,23 @@
           <button class="buttonsidebar" @click.prevent="handleClick('/databasemitra')">
             <span class="icon">
               <font-awesome-icon icon="fa-regular fa-user" />
-            </span>Database Mitra
+            </span>
+            <span>Database Mitra</span>
           </button>
         </li>
         <li>
           <button class="buttonsidebar" @click.prevent="handleClick('/evaluasimitra')">
             <span class="icon">
               <font-awesome-icon icon="fa-regular fa-star" />
-            </span>Evaluasi Mitra
+            </span>
+            <span>Evaluasi Mitra</span>
           </button>
         </li>
       </ul>
       <div class="logout">
-        <button @click="logout"> Keluar
-          {{ isCollapsed ? "" : "🚪" }}
+        <button @click="logout">
+          <span class="textkeluar">Keluar</span>
+          {{ isCollapsed ? "" : "" }}
         </button>
       </div>
     </nav>
@@ -205,6 +209,7 @@ export default {
   background-color: #202d53;
 }
 
+/*  */
 .buttonsidebar {
   display: flex;
   align-items: center;
@@ -224,34 +229,63 @@ export default {
   background-color: #202d53;
 }
 
-.sidebar.collapsed .buttonsidebar {
-  color: transparent;
-  position: relative;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  padding-left: 9px;
-  padding-right: 13px;
+.buttonsidebardropdown:hover {
+  background-color: #202d53;
 }
 
-/* dropdown */
-.dropdown {
+.buttonsidebardropdown {
   display: flex;
   align-items: center;
-  padding: 10px 7px;
+  width: 100%;
+  padding: 10px 6.5px;
+  background: transparent;
+  border: none;
   color: white;
+  text-align: left;
   cursor: pointer;
   border-radius: 8px;
+  font-size: 1rem;
   transition: background-color 0.2s;
-}
-
-.dropdown:hover {
-  background-color: #202d53;
 }
 
 .arrow {
   margin-right: 5px;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
+}
+
+/* sidebar tertutup */
+.sidebar.collapsed .buttonsidebar {
+  color: transparent;
+  position: relative;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-left: 8px;
+  padding-top: 13px;
+}
+
+.sidebar.collapsed .buttonsidebardropdown {
+  color: transparent;
+  position: relative;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-left: 8px;
+  padding-top: 13px;
+}
+
+.sidebar.collapsed.buttonsidebar .router-link-active {
+  background-color: #16213e;
+  border-radius: 8px;
+}
+
+.sidebar.collapsed.buttonsidebardropdown .router-link-active {
+  background-color: #16213e;
+  border-radius: 8px;
+}
+
+.sidebar.collapsed .arrow {
+  display: none;
 }
 
 /* submenu ini isi dari dropdown */
@@ -283,36 +317,6 @@ export default {
   border-radius: 8px;
 }
 
-/* sidebar collased */
-/* .sidebar.collapsed ul li a {
-  color: transparent;
-  position: relative;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  padding-left: 9px;
-  padding-right: 13px;
-} */
-
-.sidebar.collapsed .dropdown {
-  color: transparent;
-  position: relative;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  padding-left: 9px;
-  padding-right: 13px;
-}
-
-.sidebar.collapsed.dropdown .router-link-active {
-  background-color: #16213e;
-  border-radius: 8px;
-}
-
-.sidebar.collapsed .dropdown .arrow {
-  display: none;
-}
-
 /* button sidebar & logout*/
 .togglebtn {
   margin-top: 10px;
@@ -334,9 +338,8 @@ export default {
   background: #202d53;
 }
 
-
 .logout {
-  margin-top: auto;
+  margin-top: 100px;
   padding: 20px;
   text-align: center;
 }
@@ -354,6 +357,10 @@ export default {
 
 .logout button:hover {
   background-color: #a00;
+}
+
+.sidebar.collapsed .logout {
+  display: none;
 }
 
 /* icon */
