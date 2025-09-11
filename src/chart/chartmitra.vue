@@ -43,7 +43,11 @@ export default {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        position: 'bottom'
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: "circle",
+                        },
                     },
                     tooltip: {
                         callbacks: {
@@ -72,11 +76,11 @@ export default {
 
 <style scoped>
 .chartkegiatan {
-    height: 400px;
+    height: 300px;
     margin: 20px auto;
     padding: 20px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 </style>
