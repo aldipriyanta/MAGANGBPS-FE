@@ -95,6 +95,45 @@
         </tbody>
       </table>
     </div>
+
+    <div class="kegiatancontainer">
+      <div class="tablekegiatan">
+        <table class="isitablekegiatan">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Id_nama</th>
+              <th>Kegiatan</th>
+              <th>Honor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chartkegiatan">
+        
+      </div>
+    </div>
   </div>
 </template>
 
