@@ -129,17 +129,22 @@
           </tbody>
         </table>
       </div>
-
-      <div class="chartkegiatan">
-        
-      </div>
+      <Chartkegiatan />
+      <Chartmitra />
     </div>
   </div>
 </template>
 
 <script>
+import Chartkegiatan from '../chart/chartkegiatan.vue';
+import Chartmitra from '../chart/chartmitra.vue';
+
 export default {
   name: "Dashboard",
+  components: {
+    Chartkegiatan,
+    Chartmitra
+  },
   data() {
     return {
       pilihanTahun: "",
