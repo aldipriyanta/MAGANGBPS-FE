@@ -54,15 +54,13 @@ export default {
 
         if (response.data.status === 'success') {
           if (response.data.access_token) {
+            localStorage.setItem('role', response.data.user.role);
             localStorage.setItem('token', response.data.access_token);
-            // console.log("✅ Token disimpan:", response.data.access_token);
           }
           localStorage.setItem('isLoggedIn', 'true');
-        //   console.log("✅ isLoggedIn diset: true");
 
           const loginTime = Date.now();
           localStorage.setItem('loginTime', loginTime);
-        //   console.log("✅ loginTime disimpan:", new Date(loginTime).toLocaleString());
 
           this.startSessionTimer();
           this.$router.push('/dashboard');
@@ -70,7 +68,6 @@ export default {
           this.error = response.data.message || 'Login gagal';
         }
       } catch (err) {
-        // console.error("❌ Error response:", err.response?.data);
         this.error = err.response?.data?.message || 'Gagal Login';
       } finally {
         this.loading = false;
@@ -80,14 +77,14 @@ export default {
     startSessionTimer() {
       if (this.logoutTimer) clearTimeout(this.logoutTimer);
 
-    //   console.log("⏳ Memulai session timeout 5 menit...");
+    //   console.log("Memulai session timeout 5 menit...");
 
       this.logoutTimer = setTimeout(() => {
         // console.log("⚠ Session timeout tercapai, logout otomatis.");
         this.logout();
       }, 30 * 60 * 1000);
 
-    //   console.log("✅ Timer ID:", this.logoutTimer);
+    //   console.log("Timer ID:", this.logoutTimer);
 
       window.addEventListener('mousemove', this.resetSessionTimer);
       window.addEventListener('keydown', this.resetSessionTimer);
@@ -96,35 +93,35 @@ export default {
     resetSessionTimer() {
       if (this.logoutTimer) clearTimeout(this.logoutTimer);
 
-    //   console.log("🔄 Reset session timer ke 5 menit lagi...");
+    //   console.log("Reset session timer ke 5 menit lagi...");
 
       this.logoutTimer = setTimeout(() => {
-        // console.log("⚠ Session timeout tercapai, logout otomatis.");
+        // console.log("Session timeout tercapai, logout otomatis.");
         this.logout();
       }, 30 * 60 * 1000);
 
-    //   console.log("✅ Timer baru ID:", this.logoutTimer);
+    //   console.log("Timer baru ID:", this.logoutTimer);
     },
 
     logout() {
         console.log("🚪 Logout dijalankan. Membersihkan session...");
 
-        // Hentikan timer session
+        // hentikan timer session
         if (this.logoutTimer) {
             clearTimeout(this.logoutTimer);
             this.logoutTimer = null;
         }
 
-        // Lepas event listener supaya tidak reset timer lagi
+        // lepas event listener supaya tidak reset timer lagi
         window.removeEventListener('mousemove', this.resetSessionTimer);
         window.removeEventListener('keydown', this.resetSessionTimer);
 
-        // Hapus localStorage
+        // hapus localStorage
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('token');
         localStorage.removeItem('loginTime');
 
-        console.log("❌ isLoggedIn, token, loginTime dihapus dari localStorage");
+        console.log("isLoggedIn, token, loginTime dihapus dari localStorage");
 
         this.$router.push('/login');
         alert('Session habis, silakan login kembali.');
